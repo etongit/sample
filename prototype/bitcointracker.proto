@@ -1,16 +1,16 @@
 syntax = "proto3";
 
-option java_multiple_files = true;
-option java_package = "io.grpc.examples.helloworld";
-option java_outer_classname = "HelloWorldProto";
 option objc_class_prefix = "HLW";
 
 package helloworld;
 
 // The Bitcoin Transcation service definition.
 service BitcoinTracker {
-  // Sends a greeting
+  // Adds address tracking for a user.
   rpc AddAddress (AddAddressRequest) returns (AddAddressResponse) {}
+  // Removes address tracking for a user.
+  rpc RemoveAddress (RemoveAddressRequest) returns (RemoveAddressResponse) {}
+  // Detects transactions for a given user between a given set of timestamps.
   rpc DetectTransactions (DetectTransactionsRequest) returns (DetectTransactionsResponse) {} 
 }
 
@@ -27,6 +27,8 @@ message AddAddressResponse {
 
 message DetectTransactionsRequest {
   string username = 1;
+  int64 start_timestamp = 2;
+  int64 end_timestamp = 3;
 }
 
 message Transactions {
