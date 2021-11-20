@@ -1,3 +1,6 @@
-# This is a test directory.
+# Run and test the detect_transfers file.
 
-What we write here is for reference purposes.
+g++ detect_transfers.cc
+./a.out
+
+
