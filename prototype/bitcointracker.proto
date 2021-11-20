@@ -6,11 +6,8 @@ package helloworld;
 
 // The Bitcoin Transcation service definition.
 service BitcoinTracker {
-  // Adds address tracking for a user.
+  // Sends a greeting
   rpc AddAddress (AddAddressRequest) returns (AddAddressResponse) {}
-  // Removes address tracking for a user.
-  rpc RemoveAddress (RemoveAddressRequest) returns (RemoveAddressResponse) {}
-  // Detects transactions for a given user between a given set of timestamps.
   rpc DetectTransactions (DetectTransactionsRequest) returns (DetectTransactionsResponse) {} 
 }
 
@@ -27,8 +24,6 @@ message AddAddressResponse {
 
 message DetectTransactionsRequest {
   string username = 1;
-  int64 start_timestamp = 2;
-  int64 end_timestamp = 3;
 }
 
 message Transactions {
@@ -37,5 +32,5 @@ message Transactions {
 }
 
 message DetectTransactionsResponse {
-  repeated Transactions transactions = 1; 
+  repeated Transactions transaction = 1; 
 }
