@@ -24,6 +24,7 @@ using helloworld::AddAddressResponse;
 using std::string;
 using std::set;
 
+// Add user to username.
 std::map<string, set<string>> username_address;
 
 // Logic and data behind the server's behavior.
@@ -36,8 +37,6 @@ class BitcoinTrackerImpl final : public BitcoinTracker::Service {
     for (const auto& address : username_address[request->username()]) {
 	   *response->add_address() = address;
     } 
-    //std::string prefix("Hello ");
-    //reply->set_message(prefix + request->name());
     return Status::OK;
   }
 };

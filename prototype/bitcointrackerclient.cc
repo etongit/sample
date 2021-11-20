@@ -27,19 +27,15 @@ class BitcoinTrackerClient {
   // Assembles the client's payload, sends it and presents the response back
   // from the server.
   std::string AddAddress(const std::string& user, const std::string& address) {
-    // Data we are sending to the server.
+    // Add the new address to be sent to the servers.
     AddAddressRequest request;
     request.set_username(user);
     *request.add_address() = address;
 
-    // Container for the data we expect from the server.
     AddAddressResponse reply;
-
-    // Context for the client. It could be used to convey extra information to
-    // the server and/or tweak certain RPC behaviors.
     ClientContext context;
 
-    // The actual RPC.
+    // Make the RPC!
     Status status = stub_->AddAddress(&context, request, &reply);
 
     // Act upon its status.
